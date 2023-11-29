@@ -13,7 +13,7 @@
     <h2>O que é JavaScript</h2>
     <h2>Diferenciais do JavaScript</h2>
     <h2>Hello world!</h2>
-<hr>
+    <hr>
     <script>
         console.log('Ola, mundo!');
     </script>
@@ -21,29 +21,43 @@
     <script>
         document.write('Ola, mundo!');
     </script>
-
+    <!-- 
     <script>
         window.alert('Ola, mundo!');
-    </script>
+    </script> -->
 
     <!-- <script>
         var1 = prompt('ola, mundo!')
         document.write(var1)            /* isso é um prompt seguido de que tudo dele vai para uma variavel onde ela aparece na tela com o comando */
     </script> -->
-<hr>
+    <hr>
 
     <div id="textoAqui"></div>
+    <script>
+        document.getElementById("textoAqui").innerHTML = "OLA inner EM HTML"
+    </script>
+    <hr>
+
+
+    <!-- INPUTS PARA O JAVASCRIPT -->
+
+    <!-- <script>
+  nome = prompt("Infomre o seu nome:");
+ console.log('nome digitado: ' + nome);
+</script> -->
+
+    <!-- <script>
+        var confirmacao = confirm('deseja continuar?');
+console.log('resposta: ' + confirmacao);
+</script> -->
+<input id="campoTexto" type="text" placeholder="Digite algo..." >
+<button onclick="obterTexto()">Obter Texto</button>
 <script>
-    document.getElementById("textoAqui").innerHTML = "OLA inner EM HTML"
+    function obterTexto() {
+        var texto = document.getElementById("campoTexto").value;
+        console.log("Texto digitado: " + texto);
+    }
 </script>
-<hr>
-
-
-
-
-
-
-
 
 
 
@@ -53,4 +67,5 @@
 
 
 </body>
+
 </html>
