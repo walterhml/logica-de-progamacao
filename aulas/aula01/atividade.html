@@ -7,22 +7,31 @@
 <body>
     <h1>Calculadora de media</h1>
 <h2>informe as medias do aluno:</h2>
-<input id="campoTexto" type="number" placeholder="digite um numero">
-<input id="campoTexto" type="number" placeholder="digite um numero">
-<input id="campoTexto" type="number" placeholder="digite um numero">
-<input id="campoTexto" type="number" placeholder="digite um numero">
-<button onclick="exibirmedia()">exibir media</button>
+<input id="nota1" type="number" placeholder="primeira nota...">
+<input id="nota2" type="number" placeholder="segunda nota...">
+<input id="nota3" type="number" placeholder="terceira nota...">
+<input id="nota4" type="number" placeholder="quarta nota...">
+
+<button onclick="media()">Exibir Média</button>
+
+
 
 <script>
+function media(){
+var nota1, nota2, nota3, nota4;
+
+nota1 = parseFloat(document.getElementById("nota1").value);
+nota2 = parseFloat(document.getElementById("nota2").value);
+nota3 = parseFloat(document.getElementById("nota3").value);
+nota4 = parseFloat(document.getElementById("nota4").value);
+
+var soma = nota1 + nota2 + nota3 + nota4;
+window.alert(soma/4);
 
 
-
-function exibirmedia() {
-var num = document.getElementById('campoTexto').value;
-document.write(num + campoTexto /4);
+}
 
 
-    }
 
 </script>
 
