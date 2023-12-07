@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //primeira seção
+        document.write("<h2> Escreva uma contagem de 0 até 10 na página");
+        document.write("<h2> Escreva uma contagem de 10 até 0 na página");
+        document.write('<h2> Escreva "Essa é a N linha", onde N é um número que vá de 1 a 5');
+
+        //segunda seção
+        document.write("<hr>")
+        document.write("<h2> Peça ao usuário um texto, e pergunte quantas vezes ele deve se repetir. Repeita-o quantas vezes o usuário pedir.");
+
+    </script>
+
+    <script>
+let texto2 = prompt('ola: ')
+
+
+for (var i = 0; i < texto2.length; i++) {
+    console.log("essa é a linha " + i + ": " + texto2[i]);
+}
+
+
+    </script>
+<script> 
+let text = "12345678910";
+
+
+for (var i = 0; i < text.length; i++) {
+    console.log(i + ": " + text[i]);
+}
+</script>
+
+<script>
+
+let texto = prompt("Digite um texto:");
+        let quantidadeRepeticoes = parseInt(prompt("Quantas vezes deseja repetir o texto?"));
+
+        for (let i = 0; i < quantidadeRepeticoes; i++) {
+            document.write(texto + "<br>");
+        }
+    
+
+
+</script>
+</body>
+
+</html>
