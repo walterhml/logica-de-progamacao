@@ -1,35 +1,112 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-  <h1>Atividade - Funções</h1>  
+  <h1>Atividade - Funções</h1>
 
-<h2>Crie uma função que sempre retorne o texto "obrigado!", para qualquer texto</h2>
+  <h2>Crie uma função que sempre retorne o texto "obrigado!", para qualquer texto</h2>
 
-<script>
+  <script>
 
-function qualquer() {
-return " Obrigado!";
+// function qualquer() {
+// return " Obrigado!";
+// }
+// let texto = prompt("informe um texto, e eu farei educado.");
+// console.log(texto + qualquer());
+// document.write(texto + qualquer());
+// alert(texto + qualquer());
+
+
+// function soma(a, b) {
+// return(a + b)
+// }
+// console.log(soma(7, 7));
+
+
+  </script>
+
+  <script>
+
+// let text = "qualquer texto"
+// console.log("o texto tem ", tamanhoTexto(text));
+
+// function tamanhoTexto(textoRecebido) {
+//   return textoRecebido.length;
+// }
+
+// console.log(text.length)
+  </script>
+
+
+  <script>
+    //Função que recebe uma lista de nomes e retorna o de maior tamanho
+
+    // let lista = ['walther', 'karina', 'joao', 'ze', 'josa']
+
+    // console.log(maiorNome(lista));
+
+    // function maiorNome() {
+    //   let maior = ''
+    //   for (let i = 0; i < lista.length; i++) {
+    //     if (lista[i].length > maior.length) {
+    //       maior = lista[i];
+
+
+    //     }
+    //     return maior;
+    //   }
+    // }
+
+  </script>
+
+  <script>
+    //funçao que recebe um numero e informa se o mesmo é par
+    // console.log(5 % 2);
+    // console.log(10 % 2);
+
+    // function ola(numero){
+
+    //         if (numero % 2 === 0) {
+    //             document.write('O numero <b> ' + numero + '<b> é par.');
+    //         } else {
+    //             document.write('O numero <b>' + numero + '</b> é impar.');
+    //         }
+
+    // }
+    // ola()
+
+    console.log(ehPar(7))
+    function ehPar(numero) {
+      return numero % 2 === 0;
+    }
+
+
+
+
+//funcao que recebe uma lista de numeros e retorna os impares
+
+function impares(listaNumeros) {
+let impares = [];
+
+for(let posicaoAtual = 0; posicaoAtual < listaNumeros.length; posicaoAtual++) {
+if(!ehPar(listaNumeros[posicaoAtual])){
+impares.push(listaNumeros[posicaoAtual]);
 }
-let texto = prompt("informe um texto, e eu farei educado.");
-console.log(texto + qualquer());
-document.write(texto + qualquer());
-alert(texto + qualquer());
 
-
-function soma(a, b) {
-return(a + b)
 }
-console.log(soma(7, 7));
 
-
-</script>
-
-
+return impares;
+}
+let numerosparaExtrair = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+console.log(impares(numerosparaExtrair))
+  </script>
 
 </body>
+
 </html>
