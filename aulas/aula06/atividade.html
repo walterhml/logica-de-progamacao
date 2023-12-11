@@ -81,31 +81,65 @@
     // }
     // ola()
 
-    console.log(ehPar(7))
-    function ehPar(numero) {
-      return numero % 2 === 0;
-    }
+    // console.log(ehPar(7))
+    // function ehPar(numero) {
+    //   return numero % 2 === 0;
+    // }
 
 
 
 
 //funcao que recebe uma lista de numeros e retorna os impares
 
-function impares(listaNumeros) {
-let impares = [];
+// function impares(listaNumeros) {
+// let impares = [];
 
-for(let posicaoAtual = 0; posicaoAtual < listaNumeros.length; posicaoAtual++) {
-if(!ehPar(listaNumeros[posicaoAtual])){
-impares.push(listaNumeros[posicaoAtual]);
-}
+// for(let posicaoAtual = 0; posicaoAtual < listaNumeros.length; posicaoAtual++) {
+// if(!ehPar(listaNumeros[posicaoAtual])){
+// impares.push(listaNumeros[posicaoAtual]);
+// }
 
-}
+// }
 
-return impares;
-}
-let numerosparaExtrair = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-console.log(impares(numerosparaExtrair))
+// return impares;
+// }
+// let numerosparaExtrair = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+// console.log(impares(numerosparaExtrair))
+
+
+
+// let texto = prompt('digite um texto com mais de 10 caracter')
+
+
+// function textocomcaracter() {
+//   let texto = prompt('digite um texto com mais de 10 caracter')
+// let textocortado = texto.substring(0, 10)
+ 
+// console.log(textocortado)
+// }
+// textocomcaracter()
+
+
+
+let textoParaTratamento = prompt("Iinsira o texto para limitar");        
+        let resultado = limitaTexto(textoParaTratamento);
+        alert(resultado);
+      
+        // Função que recebe um texto e retorna o texto dentro do limite de 10 caracteres
+        function limitaTexto(texto) {             
+            return texto.length > 10 ? texto.substring(0, 10) : texto;
+        }
+
+
+
+
+
+
   </script>
+
+
+
+
 
 </body>
 
