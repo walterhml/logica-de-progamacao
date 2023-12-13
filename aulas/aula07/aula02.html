@@ -37,16 +37,25 @@
             let listaDeCompras = document.getElementById("listaDeCompras");
             listaDeCompras.innerHTML = "";
 
-            for (let i = 0; i < itens.length; i++) {
-                let novaLinha = document.createElement("li");
-                novaLinha.textContent = itens[i];
-                listaDeCompras.appendChild(novaLinha);
-            }
+            // for (let i = 0; i < itens.length; i++) {
+            //     let novaLinha = document.createElement("li");
+            //     novaLinha.textContent = itens[i];
+            //     listaDeCompras.appendChild(novaLinha);
+            // }
         }
 
         function atualizarTotalItens() {
             totalItens.innerHTML = itens.length;
         }
+
+for(let produto of itens) {
+    let novaLinha = document.createElement("li");
+    novaLinha.innerHTML = produto;
+    listaDeCompras.appendChild(novaLinha);
+}
+
+
+
 
     </script>
 </body>
