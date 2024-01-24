@@ -15,7 +15,7 @@ class MaterialBibliografico {
     }
 
     realizarDevolucao() {
-        if(!this.disponivel) {
+        if (!this.disponivel) {
             this.disponivel = true;
             return true; //Devolução realizada com sucesso
         } else {
@@ -39,7 +39,27 @@ class Revista extends MaterialBibliografico {
 }
 
 function realizarAcao(acao) {
-    console.log("Realizou uma: " + acao);
+    const selectLivros = document.getElementById("livros");
+    const selectedIndex = selectLivros.selectedIndex;
+
+    if (selectedIndex === 0) {
+        alert("Por favor, selecione um livro válido.");
+        return;
+    }
+
+    const livroSelecionado = livros[selectedIndex - 1];
+
+    if (acao === 'emprestimo') {
+        const emprestimoSucesso = livroSelecionado.realizarEmprestimo();
+    } else if (acao === 'devolucao') {
+        const devolucaoSucesso = livroSelecionado.realizarDevolucao();
+    }
+
+}
+
+function exibirResultado(mensagem) {
+    const resultadoDiv = document.getElementById('resultado');
+    resultadoDiv.innerHTML += `<p>${mensagem}</p>`
 }
 
 const livros = [
@@ -51,7 +71,7 @@ const livros = [
 
 const selectLivros = document.getElementById("livros");
 
-for(let i = 0; i < livros.length; i++) {
+for (let i = 0; i < livros.length; i++) {
     const livro = livros[i];
     const option = document.createElement("option");
     option.value = i + 1; //Adiciona 1 para evitar o valor 0, que representa a opção padrão
