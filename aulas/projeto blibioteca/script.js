@@ -4,6 +4,7 @@ class MaterialBibliografico {
         this.autor = autor;
         this.disponivel = true;
     }
+
     realizarEmprestimo() {
         if (this.disponivel) {
             this.disponivel = false;
@@ -14,11 +15,11 @@ class MaterialBibliografico {
     }
 
     realizarDevolucao() {
-        if (this.disponivel === false) {
+        if(!this.disponivel) {
             this.disponivel = true;
-            return true;
+            return true; //Devolução realizada com sucesso
         } else {
-            return false;
+            return false; //Material já devolvido previamente
         }
     }
 }
@@ -31,8 +32,29 @@ class Livro extends MaterialBibliografico {
 }
 
 class Revista extends MaterialBibliografico {
-    constructor(titulo, autor, genero, categoria) {
+    constructor(titulo, autor, categoria) {
         super(titulo, autor);
         this.categoria = categoria;
     }
+}
+
+function realizarAcao(acao) {
+    console.log("Realizou uma: " + acao);
+}
+
+const livros = [
+    new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", "Fantasia"),
+    new Livro("Harry Potter e a Pedra Filosofal", "J.K. Rowling", "Fantasia"),
+    new Livro("Crepúsculo", "Stephenie Meyer", "Romance"),
+    new Revista("National Geographic", "National Geographic Society", "Ciência")
+];
+
+const selectLivros = document.getElementById("livros");
+
+for(let i = 0; i < livros.length; i++) {
+    const livro = livros[i];
+    const option = document.createElement("option");
+    option.value = i + 1; //Adiciona 1 para evitar o valor 0, que representa a opção padrão
+    option.text = livro.titulo;
+    selectLivros.add(option);
 }
