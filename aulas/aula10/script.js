@@ -39,6 +39,15 @@ class Personagem {
             console.log('${this.nome} não pode mais sofrer dano!');
         }
     }
+
+    atacar(inimigo){
+     if(inimigo.vivo){
+        inimigo.tomarDano(this.ataque);
+     }else{
+        console.log('Não é possivel atacar um inimigo morto!')
+     }
+
+    }
 }
 
 let personagem1 = new Personagem("Arthur", 10, 12, 100, 1, true);
