@@ -85,14 +85,14 @@ class Arqueiro extends Personagem {
 }
 
 class Guerreiro extends Personagem {
-    constructor(){
+    constructor() {
 
     }
 
 }
 
 class Mago extends Personagem {
-    constructor(){
+    constructor() {
 
     }
 
@@ -101,8 +101,8 @@ class Mago extends Personagem {
 }
 
 
-let personagem1 = new Personagem("Arthur", 10, 12, 100, 1, true);
-let personagem2 = new Personagem("Gendalf", 2, 8, 85, 1);
+let personagem1 = new Guerreiro("Arthur", 10, 12, 100, 1, true);
+let personagem2 = new Mago("Gendalf", 2, 8, 85, 1);
 
 console.log(personagem1);
 console.log(personagem2);
