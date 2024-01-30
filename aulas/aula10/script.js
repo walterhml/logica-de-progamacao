@@ -75,9 +75,10 @@ class Personagem {
 }
 
 class Arqueiro extends Personagem {
-    constructor() {
-
+    constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
+        super(nome, ataque, defesa, vida, posicao, vivo)
     }
+
 
 
 
@@ -85,15 +86,15 @@ class Arqueiro extends Personagem {
 }
 
 class Guerreiro extends Personagem {
-    constructor() {
-
+    constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
+        super(nome, ataque, defesa, vida, posicao, vivo)
     }
 
 }
 
 class Mago extends Personagem {
-    constructor() {
-
+    constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
+        super(nome, ataque, defesa, vida, posicao, vivo)
     }
 
 
