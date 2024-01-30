@@ -41,7 +41,7 @@ class Personagem {
     }
 
     tomarDano(quantidade) {
-        if (this.vivo) {            
+        if (this.vivo) {
             this.vida = this.vida - quantidade;
             console.log(`${this.nome} sofreu ${quantidade} de dano, e agora tem ${this.vida} de vida`)
 
@@ -55,7 +55,7 @@ class Personagem {
     }
 
     atacar(inimigo) {
-        if(inimigo.vivo && this.vivo) {
+        if (inimigo.vivo && this.vivo) {
             console.log(`${this.nome} atacou ${inimigo.nome} com força de ${this.ataque}`);
             inimigo.tomarDano(this.ataque);
         } else {
@@ -63,16 +63,43 @@ class Personagem {
         }
     }
 
-    recuperarVida(vidaRecebida, personagem = this){
-        personagem.vida += vidaRecebida;        
+    recuperarVida(vidaRecebida, personagem = this) {
+        personagem.vida += vidaRecebida;
 
-        if(personagem.vida > personagem.vidaMaxima) {
+        if (personagem.vida > personagem.vidaMaxima) {
             personagem.vida = personagem.vidaMaxima;
         }
 
         console.log(`${this.nome} recuperou a vida de ${personagem.nome} um total de ${vidaRecebida}, ficando com ${personagem.vida} de vida`);
     }
 }
+
+class Arqueiro extends Personagem {
+    constructor() {
+
+    }
+
+
+
+
+}
+
+class Guerreiro extends Personagem {
+    constructor(){
+
+    }
+
+}
+
+class Mago extends Personagem {
+    constructor(){
+
+    }
+
+
+
+}
+
 
 let personagem1 = new Personagem("Arthur", 10, 12, 100, 1, true);
 let personagem2 = new Personagem("Gendalf", 2, 8, 85, 1);
