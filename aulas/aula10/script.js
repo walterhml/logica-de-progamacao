@@ -34,6 +34,11 @@ Alterações do Guerreiro:
     
     - Acrescente a sobrescrita da função atacar, verificando a posição do inimigo
     - Se o inimigo estiver a mais de 1 de distância, o guerreiro não pode atacar.
+
+Alterações do Arqueiro:
+    - O arqueiro só pode atacar se a distancia dele para o oponente for maior do que 3.
+    - O arqueiro tem um totalDeFlechas.
+    - O arqueiro só pode atacar se o totla de flechas for maior que 0
 */
 
 class Personagem {
@@ -100,23 +105,22 @@ class Guerreiro extends Personagem {
 
     tomarDano(quantidade) {
         console.log(`${this.nome} sofre dano de ${quantidade}, mas defendeu com ${this.escudo} de escudo`);
+        if (quantidade > this.escudo) {
+            quantidade = quantidade - this.escudo;
+        } else {
+            quantidade = 0;
+        }
+        super.tomarDano(quantidade);
     }
 
     atacar(inimigo) {
-        if (inimigo.vivo && this.vivo) {
-            const distancia = Math.abs(this.posicao - inimigo.posicao);
-            if (distancia > 1) {
-                console.log(`${this.nome} não pode atacar ${inimigo.nome} porque está a uma distância de ${distancia}!`);
-            } else {
-                console.log(`${this.nome} atacou ${inimigo.nome} com força de ${this.ataque}`);
-                inimigo.tomarDano(this.ataque);
-            }
+        if(Math.abs(inimigo.posicao - this.posicao) < 2) {
+            super.atacar(inimigo);
         } else {
-            console.log("Não é possível atacar na condição de morto!");
+            console.log(`${inimigo.nome} muito distante para ${this.nome} atacar.`)
         }
     }
 }
-
 
 class Mago extends Personagem {
     constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
@@ -125,7 +129,7 @@ class Mago extends Personagem {
 }
 
 let personagem1 = new Guerreiro("Aragorn", 10, 12, 100, 5, true, 5);
-let personagem2 = new Mago("Gendalf", 12, 8, 85, 1);
+let personagem2 = new Mago("Gendalf", 12, 8, 85, 2);
 
 console.log(personagem1.atacar(personagem2));
 console.log(personagem2.atacar(personagem1));
