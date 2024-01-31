@@ -22,6 +22,15 @@ Exercício:
     - Crie um limite de vida máxima para o personagem
     - Crie uma função de recuperar vida que recebe um total de pontos para recuperar
     - A recuperação de via não pode fazer o personaem ir além da vida máxima
+
+Parte 3: Crie a herança
+    - Crie as classes Arqueiro, Guerreiro e Mago
+    - Todas as 3 classes herdam de personagem
+
+Alterações do Guerreiro:
+    - Acrescente a propriedade "escudo" na classe Guerreiro.
+    - A função tomarDano do Guerreiro deve proteger seus pontos de vida,
+    abatendo o dano sofrido dos pontos do seu escudo.
 */
 
 class Personagem {
@@ -78,37 +87,33 @@ class Arqueiro extends Personagem {
     constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
         super(nome, ataque, defesa, vida, posicao, vivo)
     }
-
-
-
-
-
 }
 
 class Guerreiro extends Personagem {
-    constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
+    constructor(nome, ataque, defesa, vida, posicao, vivo = true, escudo) {
         super(nome, ataque, defesa, vida, posicao, vivo)
+        this.escudo = escudo;
     }
 
+    tomarDano(quantidade) {
+        console.log(`${this.nome} sofre dano de ${quantidade}, mas defendeu com ${this.escudo} de escudo`);
+        if (quantidade > this.escudo) {
+            quantidade = quantidade - this.escudo;
+        } else {
+            quantidade = 0;
+        }
+        super.tomarDano(quantidade);
+    }
 }
 
 class Mago extends Personagem {
     constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
         super(nome, ataque, defesa, vida, posicao, vivo)
     }
-
-
-
 }
 
-
-let personagem1 = new Guerreiro("Arthur", 10, 12, 100, 1, true);
-let personagem2 = new Mago("Gendalf", 2, 8, 85, 1);
-
-console.log(personagem1);
-console.log(personagem2);
+let personagem1 = new Guerreiro("Aragorn", 10, 12, 100, 1, true, 5);
+let personagem2 = new Mago("Gendalf", 12, 8, 85, 1);
 
 console.log(personagem1.atacar(personagem2));
 console.log(personagem2.atacar(personagem1));
-console.log(personagem1.recuperarVida(15));
-console.log(personagem1.recuperarVida(15, personagem2));
