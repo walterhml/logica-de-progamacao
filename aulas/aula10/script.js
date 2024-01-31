@@ -30,7 +30,10 @@ Parte 3: Crie a herança
 Alterações do Guerreiro:
     - Acrescente a propriedade "escudo" na classe Guerreiro.
     - A função tomarDano do Guerreiro deve proteger seus pontos de vida,
-    abatendo o dano sofrido dos pontos do seu escudo.
+    abatendo o dano sofrido dos pontos do seu escudo.    
+    
+    - Acrescente a sobrescrita da função atacar, verificando a posição do inimigo
+    - Se o inimigo estiver a mais de 1 de distância, o guerreiro não pode atacar.
 */
 
 class Personagem {
@@ -97,14 +100,23 @@ class Guerreiro extends Personagem {
 
     tomarDano(quantidade) {
         console.log(`${this.nome} sofre dano de ${quantidade}, mas defendeu com ${this.escudo} de escudo`);
-        if (quantidade > this.escudo) {
-            quantidade = quantidade - this.escudo;
+    }
+
+    atacar(inimigo) {
+        if (inimigo.vivo && this.vivo) {
+            const distancia = Math.abs(this.posicao - inimigo.posicao);
+            if (distancia > 1) {
+                console.log(`${this.nome} não pode atacar ${inimigo.nome} porque está a uma distância de ${distancia}!`);
+            } else {
+                console.log(`${this.nome} atacou ${inimigo.nome} com força de ${this.ataque}`);
+                inimigo.tomarDano(this.ataque);
+            }
         } else {
-            quantidade = 0;
+            console.log("Não é possível atacar na condição de morto!");
         }
-        super.tomarDano(quantidade);
     }
 }
+
 
 class Mago extends Personagem {
     constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
@@ -112,7 +124,7 @@ class Mago extends Personagem {
     }
 }
 
-let personagem1 = new Guerreiro("Aragorn", 10, 12, 100, 1, true, 5);
+let personagem1 = new Guerreiro("Aragorn", 10, 12, 100, 5, true, 5);
 let personagem2 = new Mago("Gendalf", 12, 8, 85, 1);
 
 console.log(personagem1.atacar(personagem2));
