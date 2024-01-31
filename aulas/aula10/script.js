@@ -92,9 +92,22 @@ class Personagem {
 }
 
 class Arqueiro extends Personagem {
-    constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
+    constructor(nome, ataque, defesa, vida, posicao, vivo = true, totalDeFlechas) {
         super(nome, ataque, defesa, vida, posicao, vivo)
+        this.totalDeFlechas = totalDeFlechas;
     }
+
+    atacar(inimigo) {
+        this.totalDeFlechas = this.totalDeFlechas - 1;
+
+        if (this.totalDeFlechas > 0) {
+            super.atacar(inimigo);
+        } else {
+            console.log(`${this.nome} está sem flechas para atacar!`)
+        }
+    }
+
+
 }
 
 class Guerreiro extends Personagem {
@@ -114,7 +127,7 @@ class Guerreiro extends Personagem {
     }
 
     atacar(inimigo) {
-        if(Math.abs(inimigo.posicao - this.posicao) < 2) {
+        if (Math.abs(inimigo.posicao - this.posicao) < 2) {
             super.atacar(inimigo);
         } else {
             console.log(`${inimigo.nome} muito distante para ${this.nome} atacar.`)
@@ -128,8 +141,14 @@ class Mago extends Personagem {
     }
 }
 
-let personagem1 = new Guerreiro("Aragorn", 10, 12, 100, 5, true, 5);
-let personagem2 = new Mago("Gendalf", 12, 8, 85, 2);
+let persoGuerreiro = new Guerreiro("Aragorn", 10, 12, 100, 5, true, 5);
+let persoMago = new Mago("Gendalf", 12, 8, 85, 2);
+let persoArqueiro = new Arqueiro('legolas', 18, 9, 60, 15, true, 5);
+let persoArqueiro2 = new Arqueiro('Robin Hood', 15, 9, 60, 15, true, 8);
 
-console.log(personagem1.atacar(personagem2));
-console.log(personagem2.atacar(personagem1));
+
+// console.log(personagem1.atacar(personagem2));
+// console.log(personagem2.atacar(personagem1));
+
+
+console.log(persoArqueiro.atacar(persoArqueiro2));
