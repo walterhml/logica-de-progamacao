@@ -162,4 +162,4 @@ let persoArqueiro2 = new Arqueiro("Robin Hood", 15, 9, 60, 11, true, 8);
 console.log(persoArqueiro.atacar(persoArqueiro2));
 console.log(persoArqueiro.atacar(persoArqueiro2));
 console.log(persoArqueiro.atacar(persoArqueiro2));
-console.log(persoArqueiro.recarregarflecha(5));
+console.log(persoArqueiro.recarregarflecha(1));
