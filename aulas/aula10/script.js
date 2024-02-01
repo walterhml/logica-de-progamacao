@@ -109,14 +109,8 @@ class Arqueiro extends Personagem {
     }
 
     recarregarflecha(quantidade) {
-        this.totalDeFlechas += quantidade;
-
-        if (this.totalDeFlechas <= quantidade) {
-            this.totalDeFlechas = quantidade;
-            console.log(`${this.nome} recarregou ${quantidade} flechas. Total: ${this.totalDeFlechas}`);
-
-        }
-
+        this.totalDeFlechas = this.totalDeFlechas + quantidade;
+        return this.totalDeFlechas;
     }
 }
 
@@ -162,4 +156,4 @@ let persoArqueiro2 = new Arqueiro("Robin Hood", 15, 9, 60, 11, true, 8);
 console.log(persoArqueiro.atacar(persoArqueiro2));
 console.log(persoArqueiro.atacar(persoArqueiro2));
 console.log(persoArqueiro.atacar(persoArqueiro2));
-console.log(persoArqueiro.recarregarflecha(1));
+console.log(`Total de flechas do ${persoArqueiro.nome} agora é ${persoArqueiro.recarregarFlecha(5)}`);
