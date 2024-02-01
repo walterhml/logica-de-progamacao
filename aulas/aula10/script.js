@@ -57,7 +57,7 @@ class Personagem {
 
     morrer() {
         this.vivo = false;
-        console.log(`O ${this.nome} morreu!`);        
+        console.log(`O ${this.nome} morreu!`);
     }
 
     tomarDano(quantidade) {
@@ -101,12 +101,12 @@ class Arqueiro extends Personagem {
     }
 
     atacar(inimigo) {
-        if(this.totalDeFlechas > 0 && Math.abs(this.posicao - inimigo.posicao) > 3) {
+        if (this.totalDeFlechas > 0 && Math.abs(this.posicao - inimigo.posicao) > 3) {
             super.atacar(inimigo);
             this.totalDeFlechas -= 1;
-        } else if(!(this.totalDeFlechas > 0) && Math.abs(this.posicao - inimigo.posicao) > 3) {
+        } else if (!(this.totalDeFlechas > 0) && Math.abs(this.posicao - inimigo.posicao) > 3) {
             console.log(`${this.nome} está sem flechas para atacar!`);
-        } else if(this.totalDeFlechas > 0 && !(Math.abs(this.posicao - inimigo.posicao) > 3)){
+        } else if (this.totalDeFlechas > 0 && !(Math.abs(this.posicao - inimigo.posicao) > 3)) {
             console.log(`${this.nome} não pode atacar ${inimigo.nome} pois estão próximos ${this.posicao} - ${inimigo.posicao}`);
         }
     }
@@ -134,7 +134,7 @@ class Guerreiro extends Personagem {
     }
 
     atacar(inimigo) {
-        if(Math.abs(inimigo.posicao - this.posicao) < 2) {
+        if (Math.abs(inimigo.posicao - this.posicao) < 2) {
             super.atacar(inimigo);
         } else {
             console.log(`${inimigo.nome} muito distante para ${this.nome} atacar.`)
@@ -145,8 +145,26 @@ class Guerreiro extends Personagem {
 class Mago extends Personagem {
     constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
         super(nome, ataque, defesa, vida, posicao, vivo)
+        this.magia = this.vida / 2;
     }
-}
+
+        gastarMagia() {
+            if (this.magia >= 2) {
+                this.magia -= 2;
+                console.log(`${this.nome} gastou 2 pontos de magia. Pontos de magia restantes: ${this.magia}`);
+            } else {
+                console.log(`${this.nome} não tem pontos de magia suficientes. Perdeu 4 pontos de vida!`);
+                this.tomarDano(4);
+            }
+        }
+
+
+
+
+
+
+    }
+
 
 let persoGuerreiro = new Guerreiro("Aragorn", 10, 12, 100, 5, true, 5);
 let persoMago = new Mago("Gendalf", 12, 8, 85, 2);
@@ -159,6 +177,8 @@ let persoArqueiro2 = new Arqueiro("Robin Hood", 15, 9, 60, 11, true, 8);
 console.log(persoArqueiro.atacar(persoArqueiro2));
 console.log(persoArqueiro.atacar(persoArqueiro2));
 console.log(persoArqueiro.atacar(persoArqueiro2));
+
+console.log(persoMago.gastarMagia);
 
 
 console.log(`Total de flechas do ${persoArqueiro.nome} agora é ${persoArqueiro.recarregarFlecha(9)}`);
