@@ -54,7 +54,7 @@ class Personagem {
 
     morrer() {
         this.vivo = false;
-        console.log(`O ${this.nome} morreu!`);        
+        console.log(`O ${this.nome} morreu!`);
     }
 
     tomarDano(quantidade) {
@@ -98,14 +98,25 @@ class Arqueiro extends Personagem {
     }
 
     atacar(inimigo) {
-        if(this.totalDeFlechas > 0 && Math.abs(this.posicao - inimigo.posicao) > 3) {
+        if (this.totalDeFlechas > 0 && Math.abs(this.posicao - inimigo.posicao) > 3) {
             super.atacar(inimigo);
             this.totalDeFlechas -= 1;
-        } else if(!(this.totalDeFlechas > 0) && Math.abs(this.posicao - inimigo.posicao) > 3) {
+        } else if (!(this.totalDeFlechas > 0) && Math.abs(this.posicao - inimigo.posicao) > 3) {
             console.log(`${this.nome} está sem flechas para atacar!`);
-        } else if(this.totalDeFlechas > 0 && !(Math.abs(this.posicao - inimigo.posicao) > 3)){
+        } else if (this.totalDeFlechas > 0 && !(Math.abs(this.posicao - inimigo.posicao) > 3)) {
             console.log(`${this.nome} não pode atacar ${inimigo.nome} pois estão próximos ${this.posicao} - ${inimigo.posicao}`);
         }
+    }
+
+    recarregarflecha(quantidade) {
+        this.totalDeFlechas += quantidade;
+
+        if (this.totalDeFlechas <= quantidade) {
+            this.totalDeFlechas = quantidade;
+            console.log(`${this.nome} recarregou ${quantidade} flechas. Total: ${this.totalDeFlechas}`);
+
+        }
+
     }
 }
 
@@ -126,7 +137,7 @@ class Guerreiro extends Personagem {
     }
 
     atacar(inimigo) {
-        if(Math.abs(inimigo.posicao - this.posicao) < 2) {
+        if (Math.abs(inimigo.posicao - this.posicao) < 2) {
             super.atacar(inimigo);
         } else {
             console.log(`${inimigo.nome} muito distante para ${this.nome} atacar.`)
@@ -151,3 +162,4 @@ let persoArqueiro2 = new Arqueiro("Robin Hood", 15, 9, 60, 11, true, 8);
 console.log(persoArqueiro.atacar(persoArqueiro2));
 console.log(persoArqueiro.atacar(persoArqueiro2));
 console.log(persoArqueiro.atacar(persoArqueiro2));
+console.log(persoArqueiro.recarregarflecha(5));
