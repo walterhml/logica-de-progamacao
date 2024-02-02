@@ -10,7 +10,7 @@
     - Crie uma função cadastrarVeiculo
 */
 class Veiculo {
-    constructor(marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL) {
+    constructor(marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL, anoDeFabricacao) {
         this.marca = marca;
         this.modelo = modelo;
         this.preco = preco;
@@ -18,6 +18,7 @@ class Veiculo {
         this.autonomia = autonomia;
         this.capacidadeTanque = capacidadeTanque;
         this.imagemURL = imagemURL;
+        this.anoDeFabricacao = anoDeFabricacao;
     }
 
     calcularDistanciaMaxima() {
@@ -27,6 +28,13 @@ class Veiculo {
     exibirDetalhes() {
         return `${this.marca} ${this.modelo} - ${this.cor} - R$ ${this.preco.toFixed(2)}`;
     }
+
+    isentoIpva() {
+
+    }
+
+
+
 }
 
 let veiculos = [];
