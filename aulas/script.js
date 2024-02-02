@@ -2,9 +2,12 @@
 #Parte 1:
     - Crie uma classe Veiculo
     - Adicione as propriedades: marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL
-    - Adicione um metodo calcularDistanciaMaxia, que retornará a autonomia * capacidadeTanque
+    - Adicione um metodo calcularDistanciaMaxima, que retornará a autonomia * capacidadeTanque
     - Adicione um metodo exibirDetalhes, que retornará os dados concatenados de:
         * marca, modelo, cor, preco.toFixed(2)
+
+#Parte 2:
+    - Crie uma função cadastrarVeiculo
 */
 class Veiculo {
     constructor(marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL) {
@@ -22,32 +25,32 @@ class Veiculo {
     }
 
     exibirDetalhes() {
-        return `${this.marca} - ${this.modelo} - ${this.cor} -  R$ ${this.preco.toFixed(2)}`;
+        return `${this.marca} ${this.modelo} - ${this.cor} - R$ ${this.preco.toFixed(2)}`;
     }
-
-
 }
 
 let veiculos = [];
-veiculos.push(new Veiculo('Fiat', 'Uno', 60000, 'Branco', 16, 90, 'www.url.com'));
-veiculos.push(new Veiculo('Fiat', 'Uno Com Escada', 60000, 'Vermelho', 16, 90, 'www.url.com'));
-veiculos.push(new Veiculo('Fiat', 'Palio', 60000, 'Preto', 16, 90, 'www.url.com'));
 
+// Função para cadastrar veículo
+function cadastrarVeiculo() {
+    //recebimento de valores do HTML
+    const marca = document.getElementById("marca").value;
+    const modelo = document.getElementById("modelo").value;
+    const preco = parseFloat(document.getElementById("preco").value);
+    const cor = document.getElementById("cor").value;
+    const autonomia = parseInt(document.getElementById("autonomia").value);
+    const capacidadeTanque = parseInt(document.getElementById("capacidadeTanque").value);
+    const imagemURL = document.getElementById("imagemURL").value;    
 
-console.log(veiculos);
+    // Instanciar um novo objeto veículo, passando os valores pedidos no construtor
+    const veiculo = new Veiculo(marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL);
 
+    // Adicionar o veículo a nossa lista "banco de dados"
+    veiculos.push(veiculo);
 
+    // Atualiza a exibição
+    console.log(veiculos);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // Limpar formulário
+    document.getElementById("veiculoForm").reset();
+}
