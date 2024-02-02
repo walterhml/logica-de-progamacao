@@ -49,33 +49,38 @@ function cadastrarVeiculo() {
     veiculos.push(veiculo);
 
     // Atualiza a exibição
-    console.log(veiculos);
+    exibirVeiculos()
 
     // Limpar formulário
     document.getElementById("veiculoForm").reset();
 }
 
-
 function exibirVeiculos() {
-    const veiculosList = document.getElementById('veiculosList');
-    // limpas a lista antes de exibir os veículos
-    veiculosList.innerHTML = '';
+    const veiculosList = document.getElementById("veiculosList");
+    // Limpar a lista antes de exibir os veículos
+    veiculosList.innerHTML = "";
 
     for (let i = 0; i < veiculos.length; i++) {
-        const veiculoItem = document.createElement('li');
-        veiculoItem.innerHTML = veiculos[i].modelo;
+        const veiculoItem = document.createElement("li");
+        const veiculoCard = criarVeiculoCard(veiculos[i]);
+        veiculosList.appendChild(veiculoCard);
         veiculosList.appendChild(veiculoItem);
-        
-
-
-
     }
+}
 
+function criarVeiculoCard(veiculo) {
+    const veiculoCard = document.createElement("div");
+    veiculoCard.className = "veiculo-card";
 
+    const imagemVeiculo = document.createElement("img");
+    imagemVeiculo.src = veiculo.imagemURL;
+    imagemVeiculo.className = "veiculo-imagem";
+    imagemVeiculo.alt = `${veiculo.marca} ${veiculo.modelo}`;
+    veiculoCard.appendChild(imagemVeiculo);
 
+    const detalhesVeiculo = document.createElement("div");
+    detalhesVeiculo.textContent = veiculo.exibirDetalhes() + ` - Distância máxima: ${veiculo.calcularDistanciaMaxima()} km`;
+    veiculoCard.appendChild(detalhesVeiculo);
 
-
-
-
-
+    return veiculoCard;
 }
