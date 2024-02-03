@@ -30,11 +30,11 @@ class Veiculo {
     }
 
     isentoIpva() {
+        let ano = new Date;
+        ano = ano.getFullYear();
+        return ano - this.anoDeFabricacao >= 20
 
     }
-
-
-
 }
 
 let veiculos = [];
