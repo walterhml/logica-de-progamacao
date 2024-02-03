@@ -8,17 +8,22 @@
 
 #Parte 2:
     - Crie uma função cadastrarVeiculo
+
+#Exercício:
+    - Adicione ao veículo um anoDeFabricacao
+    - Adicione uma função que retorne se o veículo é isento de IPVA.
+    - Utilize o Date().getFullYear();
 */
 class Veiculo {
-    constructor(marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL, anoDeFabricacao) {
+    constructor(marca, modelo, preco, cor, autonomia, capacidadeTanque, anoDeFabricacao, imagemURL) {
         this.marca = marca;
         this.modelo = modelo;
         this.preco = preco;
         this.cor = cor;
         this.autonomia = autonomia;
         this.capacidadeTanque = capacidadeTanque;
-        this.imagemURL = imagemURL;
         this.anoDeFabricacao = anoDeFabricacao;
+        this.imagemURL = imagemURL;
     }
 
     calcularDistanciaMaxima() {
@@ -26,14 +31,18 @@ class Veiculo {
     }
 
     exibirDetalhes() {
-        return `${this.marca} ${this.modelo} - ${this.cor} - R$ ${this.preco.toFixed(2)}`;
+        if (this.ehIsentoIPVA()) {
+            return `${this.marca} ${this.modelo} - ${this.cor} - R$ ${this.preco.toFixed(2)} \n ISENTO DE IPVA!`;
+        } else {
+            return `${this.marca} ${this.modelo} - ${this.cor} - R$ ${this.preco.toFixed(2)}`;
+        }
     }
 
-    isentoIpva() {
-        let ano = new Date;
-        ano = ano.getFullYear();
-        return ano - this.anoDeFabricacao >= 20
+    ehIsentoIPVA() {
+        const dataAtual = new Date;
+        const anoAtual = dataAtual.getFullYear();
 
+        return anoAtual - this.anoDeFabricacao >= 20;
     }
 }
 
@@ -48,10 +57,11 @@ function cadastrarVeiculo() {
     const cor = document.getElementById("cor").value;
     const autonomia = parseInt(document.getElementById("autonomia").value);
     const capacidadeTanque = parseInt(document.getElementById("capacidadeTanque").value);
+    const anoDeFabricacao = parseInt(document.getElementById("anoDeFabricacao").value);
     const imagemURL = document.getElementById("imagemURL").value;
 
     // Instanciar um novo objeto veículo, passando os valores pedidos no construtor
-    const veiculo = new Veiculo(marca, modelo, preco, cor, autonomia, capacidadeTanque, imagemURL);
+    const veiculo = new Veiculo(marca, modelo, preco, cor, autonomia, capacidadeTanque, anoDeFabricacao, imagemURL);
 
     // Adicionar o veículo a nossa lista "banco de dados"
     veiculos.push(veiculo);
