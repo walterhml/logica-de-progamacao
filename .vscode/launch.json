@@ -5,6 +5,13 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "type": "java",
+            "name": "olamundo",
+            "request": "launch",
+            "mainClass": "olamundo",
+            "projectName": "logica-de-progamacao_d6b6c252"
+        },
+        {
             "type": "chrome",
             "request": "launch",
             "name": "Launch Chrome against localhost",
