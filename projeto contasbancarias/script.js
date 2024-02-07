@@ -77,3 +77,60 @@ contas.push(contaX);
 let contaY = new ContaPoupanca(clienteB, 111, 100, 0.01);
 contas.push(contaY);
 
+function cadastrarCliente() {
+
+    // pegar dados da tela
+    const nome = document.getElementById("nomeCliente").value;
+    const cpf = document.getElementById("cpfCliente").value;
+
+    // instanciar novo cliente
+    const cliente = new Cliente(nome, cpf);
+
+    // adicionar esse cliente a lista de clientes
+    clientes.push(cliente);
+}
+
+function atualizarSeletorClientes() {
+    const seletorClientes = document.getElementById("cliente");
+
+    clientes.forEach(cliente => {
+        const option = document.createElement("option");
+        option.value = cliente.cpf;
+        option.textContent = cliente.nome;
+        seletorClientes.appendChild(option);
+    })
+
+
+}
+
+
+
+function cadastrarConta() {
+    // pegar os dados da tela
+    const numeroConta = document.getElementById("numero").value;
+    const saldoConta = parseInt(document.getElementById("saldo").value);
+    const tipoConta = parseInt(document.getElementById("tipoConta").value);
+
+    // indentificar o cliente selecionando na lista de clientes
+    const clienteSelecionado = document.getElementById("cliente").value;
+    const cliente = clientes.find(c => c.cpf === clienteSelecionado);
+
+
+    // instanciar uma nova conta a partir do tipo de conta selecionada
+    let conta;
+    switch (tipoConta) {
+        case "contaPoupanca":
+            conta = new ContaCorrente(cliente, numero, saldo, 100);
+            break;
+        case "contaCorrente":
+            conta = new ContaCorrente(cliente, numero, saldo, 0.01);
+            break;
+        default:
+            alert("tipo selecionado invalido");
+
+
+
+
+    }
+
+}
