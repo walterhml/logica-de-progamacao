@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+section {
+    padding: 20px;
+}
+
+#adicionar-produto {
+    background-color: #f9f9f9;
+}
+
+#adicionar-produto form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#adicionar-produto form label {
+    width: 100px;
+}
+
+#adicionar-produto form input {
+    flex: 1;
+    padding: 5px;
+}
+
+#adicionar-produto form button {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+#adicionar-produto form button:hover {
+    background-color: #555;
+}
+
+#estoque {
+    margin-top: 20px;
+}
+
+#lista-produtos {
+    list-style-type: none;
+    padding: 0;
+}
+
+#lista-produtos li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.div{
+    background-color: #333;
+ color: white;
+ width: 700px;
+ height: 650px;
+ border-radius: 15px;
+ position: relative;
+ margin: 0 auto;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+img {
+    width: 500px;
+    border-radius: 15px;
+    
+}
+h1 {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+/* .divpr{
+    width: 900px;
+    height: 1000px;
+    background-color: #555;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 0 auto;
+} */
+
+.zoom-img {
+    /* width: 100%; faz a imagem ocupar toda a largura do container */
+    transition: transform 0.3s ease; /* adiciona uma transição suave no efeito de zoom */
+}
+
+.zoom-img:hover {
+    transform: scale(1.2); /* aumenta o tamanho da imagem em 20% no eixo x e y (efeito de zoom) */
+}

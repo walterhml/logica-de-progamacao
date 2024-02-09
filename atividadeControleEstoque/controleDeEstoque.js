@@ -29,8 +29,7 @@ class ProdutoPerecivel extends Produto {
     // verificarValidade(): Verifica se o produto perecível está dentro da data de validade, retornando true se estiver válido e false caso contrário.
     verificarValidade() {
         const dataAtual = new Date();
-        dataAtual <= this.dataValidade;
-        return console.log("O produto ainda está na data de validade!");
+        return dataAtual <= this.dataValidade;
     }
 }
 
@@ -49,18 +48,32 @@ class Estoque {
 
     adicionarProduto(produto) {
         this.produtos.push(produto);
+        console.log(`Produto adicionado: ${produto.nome}`);
     }
 
     // removerProduto(nome): Remove um produto da lista pelo nome.
 
     removerProduto(nome) {
-        this.produto = this.produto.filter(produto => produto.nome !== nome);
+        let indiceProduto = -1;
+        for (let i = 0; i < this.produtos.length; i++) {
+            if (this.produtos[i].nome === nome) {
+                indiceProduto = i;
+                break;
+            }
+        }
+
+        if (indiceProduto !== -1) {
+            this.produtos.splice(indiceProduto, 1); // splice é ultilizado para remover um item da lista ultizando o indiceProduto que 
+            console.log(`Produto removido: ${nome}`); // que corre no for this.produtos.length, usando esse indice ele remove apenas um elemento
+        } else {
+            console.log(`Produto "${nome}" não encontrado no estoque.`);
+        }
     }
 
     // verificarEstoqueDisponivel(nome): Verifica e exibe a quantidade disponível de um produto pelo nome.
 
     verificarEstoqueDisponivel(nome) {
-        const produto = this.produtos.find(produto => produto.nome === nome);
+        const produto = this.produtos.find(produto => produto.nome === nome); //Utiliza o método find() para percorrer a lista de produtos (this.produtos).
         if (produto) {
             console.log(`Quantidade disponivel de ${nome}: ${produto.quantidadeDisponivel}`);
         } else {
@@ -86,24 +99,38 @@ const meuEstoque = new Estoque();
 // Adição de Produtos:
 // Adiciona produtos do tipo Produto e ProdutoPerecivel ao estoque.
 const produto1 = new Produto("camisa", 60.00, 10);
-const produtoPerecivel2 = new ProdutoPerecivel("leite", 5, 4.5, new Date('2024-02-08'));
+const produtoPerecivel2 = new ProdutoPerecivel("leite", 155, 4.5, new Date('2024-02-06'));
+const produto3 = new Produto("relogio", 5, 199);
+const produto4 = new ProdutoPerecivel("feijao", 87.50, 10, new Date("2025-09-09"));
 
+console.log("\n---------------------AQUI ESTÁ TODO PRODUTO ADICIONADO AO ESTOQUE---------------------------\n\n");
 meuEstoque.adicionarProduto(produto1);
 meuEstoque.adicionarProduto(produtoPerecivel2);
+meuEstoque.adicionarProduto(produto3);
+meuEstoque.adicionarProduto(produto4);
 // Verificação e Cálculos:
 // Realiza operações como verificar a disponibilidade de produtos, calcular o valor total do estoque e remover um produto específico.
 
 //verificar a disponibilidade de produtos
+console.log("\n\n-----------------------------AQUI ESTA A VERIFICAÇÃO DO ESTOQUE-----------------------------------\n\n");
 meuEstoque.verificarEstoqueDisponivel("leite");
 meuEstoque.verificarEstoqueDisponivel("camisa");
-
-//calcular o valor total do estoque
+meuEstoque.verificarEstoqueDisponivel("relogio");
+meuEstoque.verificarEstoqueDisponivel("feijao");
+//calcular o valor total do estoque/
+console.log("\n\n-----------------------------------VALOR TOTAL DO ESTOQUE-----------------------------------------\n\n");
 meuEstoque.calcularValorTotalEstoque();
 
 //remover um produto específico.
+console.log("\n\n-----------------------------TODOS INTENS REMOVIDOS DA LISTA-------------------------------------\n\n");
 meuEstoque.removerProduto("leite");
+meuEstoque.removerProduto("Camisa");
+meuEstoque.removerProduto("relogio");
+
 
 // Exibição de Resultados:
 // Exibe resultados das operações realizadas no estoque.
+console.log("\n\n----------------------------VERIFICANDO A VALIDADE DO PRODUTO-------------------------------\n\n");
 console.log("Verificando validade do produto perecivel");
-console.log(produto1.verificarValidade);
+console.log(produtoPerecivel2.verificarValidade());
+console.log(produto4.verificarValidade());
