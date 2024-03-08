@@ -72,14 +72,33 @@ class Estoque {
 
     // verificarEstoqueDisponivel(nome): Verifica e exibe a quantidade disponível de um produto pelo nome.
 
+    // verificarEstoqueDisponivel(nome) {
+    //     const produto = this.produtos.find(produto => produto.nome === nome); //Utiliza o método find() para percorrer a lista de produtos (this.produtos).
+    //     if (produto) {
+    //         console.log(`Quantidade disponivel de ${nome}: ${produto.quantidadeDisponivel}`);
+    //     } else {
+    //         console.log("Produto não encontrado no estoque.");
+    //     }
+    // }
+
     verificarEstoqueDisponivel(nome) {
-        const produto = this.produtos.find(produto => produto.nome === nome); //Utiliza o método find() para percorrer a lista de produtos (this.produtos).
-        if (produto) {
-            console.log(`Quantidade disponivel de ${nome}: ${produto.quantidadeDisponivel}`);
-        } else {
+        let produtoEncontrado = false;
+    
+        for (let i = 0; i < this.produtos.length; i++) {
+            const produto = this.produtos[i];
+            
+            if (produto.nome === nome) {
+                console.log(`Quantidade disponível de ${nome}: ${produto.quantidadeDisponivel}`);
+                produtoEncontrado = true;
+                break; // Encerra o loop assim que encontrar o produto
+            }
+        }
+    
+        if (!produtoEncontrado) {
             console.log("Produto não encontrado no estoque.");
         }
     }
+    
 
     // calcularValorTotalEstoque(): Calcula e exibe o valor total do estoque somando o valor total de cada produto.
 
